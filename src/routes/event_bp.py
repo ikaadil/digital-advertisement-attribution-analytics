@@ -1,13 +1,7 @@
 from flask import Blueprint
+from controllers.EventController import add
+
 
 event_bp = Blueprint('event_bp', __name__)
 
-
-@event_bp.route('', methods=['POST'])
-def create():
-    pass
-
-
-@event_bp.route('', methods=['GET'])
-def get():
-    pass
+event_bp.route('', methods=['POST'])(add)
