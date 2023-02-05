@@ -1,17 +1,15 @@
-from flask_sqlalchemy import SQLAlchemy
-
-
-db = SQLAlchemy()
+from sqlalchemy import Column, Integer, String, DateTime
+from config import db
 
 
 class Event(db.Model):
     __tablename__ = 'events'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    fingerprint = db.Column(db.String(64))
-    user_id = db.Column(db.String(64))
-    created_at = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    fingerprint = Column(String(64))
+    user_id = Column(String(64))
+    created_at = Column(DateTime)
 
     @property
     def serialize(self):
