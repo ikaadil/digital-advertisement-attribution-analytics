@@ -10,6 +10,7 @@ class Pageview(db.Model):
     user_id = Column(String(64))
     url = Column(String(200))
     referrer_url = Column(String(200))
+    referrer_domain = Column(String(50))
     created_at = Column(DateTime)
 
     @property
@@ -20,5 +21,6 @@ class Pageview(db.Model):
             'user_id': self.user_id,
             'url': self.url,
             'referrer_url': self.referrer_url,
+            'referrer_domain': self.referrer_domain,
             'created_at': self.created_at
         }
