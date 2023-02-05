@@ -5,6 +5,7 @@ from flask import Flask
 from flask_migrate import Migrate
 
 from routes.event_bp import event_bp
+from routes.pageview_bp import pageview_bp
 from config import db
 
 
@@ -23,6 +24,7 @@ def create_table():
 
 
 app.register_blueprint(event_bp, url_prefix='/event')
+app.register_blueprint(pageview_bp, url_prefix='/pageview')
 
 
 @app.route('/')
