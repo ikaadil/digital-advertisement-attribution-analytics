@@ -34,7 +34,7 @@ def get():
     result = db.session.execute(text(query)).fetchall()
     response["pageview_count"] = to_dict(result)
     if show_succeeded_ad:
-        query = f'select referrer_domain, count(distinct(fingerprint)) from pageviews where created_at>="{date_time}" and fingerprint IN (select fingerprint from events) group by referrer_domain'
+        query = f'select referrer_domain, count(distinct(fingerprint)) from pageviews where created_at>="{date_time}" and fingerprint IN (select fingerprint from events where name="signup") group by referrer_domain'
         result = db.session.execute(text(query)).fetchall()
         response["succeeded_ad_count"] = to_dict(result)
     return json.dumps(response)
