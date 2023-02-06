@@ -1,7 +1,6 @@
 from flask import request
 import datetime
 from tldextract import tldextract
-import json
 
 
 def get_request_param(param_name):
@@ -24,8 +23,8 @@ def extract_domain(url):
     return tldextract.extract(url).domain
 
 
-def to_json(data):
+def to_dict(data):
     result = []
     for i in data:
         result.append({i[0]: i[1]})
-    return json.dumps(result)
+    return result

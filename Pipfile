@@ -9,6 +9,7 @@ sqlalchemy = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 python-dotenv = "*"
+tldextract = "*"
 
 [dev-packages]
 
