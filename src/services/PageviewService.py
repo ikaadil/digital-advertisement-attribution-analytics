@@ -11,13 +11,13 @@ def add_pageview_info(pageview: Pageview) -> dict:
 
 
 def get_pageview_count(date_time):
-    query = f'select referrer_domain, count(*) from pageviews where created_at>="{date_time}" group by referrer_domain'
+    query = f'select referrer_domain, count(*) from pageviews where created_at>="{date_time}" and user_id is NULL group by referrer_domain'
     result = db.session.execute(text(query)).fetchall()
     return to_dict(result)
 
 
 def get_succeeded_ad(date_time):
-    query = f'select referrer_domain, count(distinct(fingerprint)) from pageviews where created_at>="{date_time}" and fingerprint IN (select fingerprint from events where name="signup") group by referrer_domain'
+    query = f'select referrer_domain, count(distinct(fingerprint)) from pageviews where created_at>="{date_time}" and user_id is NULL and fingerprint IN (select fingerprint from events where name="signup") group by referrer_domain'
     result = db.session.execute(text(query)).fetchall()
     return to_dict(result)
 
