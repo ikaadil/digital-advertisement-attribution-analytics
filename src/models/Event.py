@@ -3,6 +3,8 @@ from config import db
 
 
 class Event(db.Model):
+    """A generalized event model class"""
+
     __tablename__ = 'events'
 
     id = Column(Integer, primary_key=True)

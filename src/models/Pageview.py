@@ -3,6 +3,9 @@ from config import db
 
 
 class Pageview(db.Model):
+    """A pageview model class. Added `referrer_domain` because
+    it will be easy to query in future"""
+
     __tablename__ = 'pageviews'
 
     id = Column(Integer, primary_key=True)
@@ -10,7 +13,7 @@ class Pageview(db.Model):
     user_id = Column(String(64))
     url = Column(String(200))
     referrer_url = Column(String(200))
-    referrer_domain = Column(String(50))
+    referrer_domain = Column(String(50)) 
     created_at = Column(DateTime)
 
     @property
