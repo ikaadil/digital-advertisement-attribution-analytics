@@ -32,7 +32,8 @@ def get_pageview_count(date_time):
 def get_succeeded_ad(date_time):
     """If a user visit a page from advertisement and signup in the app, 
     then his fingerprint will be same. So if we find any fingerprint in
-    events table, we consider this as successful advertisement"""
+    events table, we consider this as successful advertisement. Where null 
+    domain means direct visit"""
 
     query = f"""
     SELECT referrer_domain,
